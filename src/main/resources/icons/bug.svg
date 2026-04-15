@@ -1,0 +1,29 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#C4464D"
+  stroke-width="1.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-label="Bug Icon"
+  role="img"
+>
+  <!-- Antennae -->
+  <path d="M9 5.5 7.5 4M15 5.5 16.5 4"/>
+
+  <!-- Head -->
+  <circle cx="12" cy="7.5" r="2"/>
+
+  <!-- Body -->
+  <rect x="8" y="10" width="8" height="10" rx="4"/>
+
+  <!-- Center seam -->
+  <path d="M12 10v10"/>
+
+  <!-- Legs (3 per side) -->
+  <path d="M8 12 5.5 10.5M8 15 5 15M8 18 5.5 19.5"/>
+  <path d="M16 12 18.5 10.5M16 15 19 15M16 18 18.5 19.5"/>
+</svg>
