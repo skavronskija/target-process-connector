@@ -119,7 +119,10 @@ public class TargetprocessRepository extends NewBaseRepositoryImpl {
   @Nullable
   @Override
   public String extractId(@NotNull String taskName) {
-    String id = taskName.replaceAll("TP-", "");
+    if (!taskName.matches(".*TP-\\d+.*")) {
+      return null;
+    }
+    String id = taskName.replaceFirst(".*TP-(\\d+).*", "$1");
     LOG.info("Extract id: entity '" + taskName + "' -> id '" + id + "'");
     return id;
   }
