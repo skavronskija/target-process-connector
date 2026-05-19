@@ -1,4 +1,4 @@
-package com.toxa.testplugin;
+package ie.distilled.targetprocess;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +17,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
@@ -64,22 +65,37 @@ public class TargetprocessRepository extends NewBaseRepositoryImpl {
   }
 
   private Task[] getIssues(URI requestUrl) throws Exception {
-    HttpClient client = getHttpClient();
-    HttpGet request = new HttpGet(requestUrl);
+    for (int attempt = 1; ; attempt++) {
+      HttpClient client = getHttpClient();
+      HttpGet request = new HttpGet(requestUrl);
 
-    try {
-      ResponseHandler<String> responseHandler = new BasicResponseHandler();
-      String responseString = client.execute(request, responseHandler);
+      try {
+        ResponseHandler<String> responseHandler = new BasicResponseHandler();
+        String responseString = client.execute(request, responseHandler);
 
-      TargetprocessResponse response = OBJECT_MAPPER.readValue(responseString, TargetprocessResponse.class);
-      Assignable[] assignables = response.getItems();
-      LOG.info("Received " + assignables.length + " entities");
-      return assignables;
-    } catch (Exception e) {
-      LOG.error("Error reading response", e);
-      throw e;
-    } finally {
-      request.releaseConnection();
+        TargetprocessResponse response = OBJECT_MAPPER.readValue(responseString, TargetprocessResponse.class);
+        Assignable[] assignables = response.getItems();
+        LOG.info("Received " + assignables.length + " entities");
+        return assignables;
+      } catch (HttpResponseException e) {
+        if (e.getStatusCode() == 401 && attempt == 1) {
+          LOG.warn("Target Process returned 401; retrying once after a short delay");
+          try {
+            Thread.sleep(500L);
+          } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+            throw e;
+          }
+          continue;
+        }
+        LOG.warn("Target Process responded with HTTP " + e.getStatusCode() + ": " + e.getMessage());
+        throw e;
+      } catch (Exception e) {
+        LOG.warn("Error reading Target Process response", e);
+        throw e;
+      } finally {
+        request.releaseConnection();
+      }
     }
   }
 

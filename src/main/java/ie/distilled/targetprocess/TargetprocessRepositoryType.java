@@ -1,4 +1,4 @@
-package com.toxa.testplugin;
+package ie.distilled.targetprocess;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.IconLoader;
