@@ -1,6 +1,3 @@
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "2.1.0"
@@ -8,10 +5,7 @@ plugins {
 }
 
 group = "com.toxa"
-// Build version: yyyyMMdd-HHmm timestamp at configuration time.
-// Override with -PbuildVersion=<value>; run `clean` to force a fresh timestamp when the configuration cache is reused.
-version = (findProperty("buildVersion") as String?)
-    ?: LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmm"))
+version = (findProperty("buildVersion") as String?) ?: "0.0.1"
 
 repositories {
     mavenCentral()
@@ -35,6 +29,8 @@ dependencies {
 
 intellijPlatform {
     pluginConfiguration {
+        version = project.version.toString()
+
         ideaVersion {
             sinceBuild = "251"
         }
