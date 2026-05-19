@@ -66,4 +66,3 @@ src/main/resources/icons/              # bug / feature / other / plugin icons
 
 ## License
 
-[MIT](LICENSE)
