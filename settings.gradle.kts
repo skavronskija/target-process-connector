@@ -1,1 +1,1 @@
-rootProject.name = "test-plugin"
+rootProject.name = "target-process-connector"
