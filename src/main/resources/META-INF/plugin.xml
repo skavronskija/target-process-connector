@@ -13,5 +13,8 @@
 
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.tasks</depends>
-  <depends optional="true" config-file="tasks.xml">com.intellij.tasks</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <tasks.repositoryType implementation="com.toxa.targetprocess.TargetprocessRepositoryType"/>
+  </extensions>
 </idea-plugin>

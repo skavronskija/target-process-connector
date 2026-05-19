@@ -39,6 +39,12 @@ intellijPlatform {
             Initial version
         """.trimIndent()
     }
+
+    pluginVerification {
+        ides {
+            create(org.jetbrains.intellij.platform.gradle.IntelliJPlatformType.IntellijIdeaCommunity, "2025.1.4.1")
+        }
+    }
 }
 
 tasks {
