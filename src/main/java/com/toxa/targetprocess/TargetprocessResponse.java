@@ -1,4 +1,4 @@
-package ie.distilled.targetprocess;
+package com.toxa.targetprocess;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

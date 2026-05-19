@@ -1,5 +1,5 @@
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij">
-        <tasks.repositoryType implementation="ie.distilled.targetprocess.TargetprocessRepositoryType"/>
+        <tasks.repositoryType implementation="com.toxa.targetprocess.TargetprocessRepositoryType"/>
     </extensions>
 </idea-plugin>

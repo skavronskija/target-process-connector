@@ -7,7 +7,7 @@ plugins {
     id("org.jetbrains.intellij.platform") version "2.7.1"
 }
 
-group = "ie.distilled"
+group = "com.toxa"
 // Build version: yyyyMMdd-HHmm timestamp at configuration time.
 // Override with -PbuildVersion=<value>; run `clean` to force a fresh timestamp when the configuration cache is reused.
 version = (findProperty("buildVersion") as String?)

@@ -1,4 +1,4 @@
-package ie.distilled.targetprocess;
+package com.toxa.targetprocess;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.tasks.config.BaseRepositoryEditor;

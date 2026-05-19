@@ -1,4 +1,4 @@
-package ie.distilled.targetprocess;
+package com.toxa.targetprocess;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
