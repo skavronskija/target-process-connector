@@ -9,9 +9,6 @@ import com.intellij.util.Consumer;
 import javax.swing.Icon;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * @author khomyackov
- */
 public class TargetprocessRepositoryType extends BaseRepositoryType<TargetprocessRepository> {
 
   @NotNull
