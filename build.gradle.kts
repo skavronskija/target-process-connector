@@ -5,7 +5,12 @@ plugins {
 }
 
 group = "com.toxa"
-version = (findProperty("buildVersion") as String?) ?: "0.0.2"
+val pluginXmlVersion: String = file("src/main/resources/META-INF/plugin.xml")
+    .readText()
+    .let { Regex("<version>([^<]+)</version>").find(it)?.groupValues?.get(1) }
+    ?: error("<version> not found in src/main/resources/META-INF/plugin.xml")
+
+version = (findProperty("buildVersion") as String?) ?: pluginXmlVersion
 
 repositories {
     mavenCentral()
@@ -43,7 +48,8 @@ intellijPlatform {
     }
 
     publishing {
-        token = providers.environmentVariable("PUBLISH_TOKEN")
+        token = providers.environmentVariable("JETBRAINS_MARKETPLACE_TOKEN")
+        channels = listOf((findProperty("publishChannel") as String?) ?: "default")
     }
 
     pluginVerification {

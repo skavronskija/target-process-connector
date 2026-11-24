@@ -49,7 +49,13 @@ The plugin uses Java 21, Kotlin Gradle DSL, and IntelliJ Platform Gradle Plugin 
 
 ### Versioning
 
-Semantic versioning. The version is declared once in `build.gradle.kts` (`version = ...`) and injected into `plugin.xml` at build time. Override per-build with `-PbuildVersion=1.2.3`.
+Semantic versioning. The version is declared once in `src/main/resources/META-INF/plugin.xml` (`<version>`) and read by `build.gradle.kts`. Override per-build with `-PbuildVersion=1.2.3`.
+
+### Publishing
+
+- Every push to `main` publishes `<version>-unstable.<run>` to the Marketplace **unstable** channel.
+- Pushing a `v<version>` tag that matches `plugin.xml` publishes to the **default** channel and creates a GitHub release with the zip.
+- Both need the `JETBRAINS_MARKETPLACE_TOKEN` repository secret.
 
 ## Project Layout
 
