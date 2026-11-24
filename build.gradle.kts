@@ -38,8 +38,12 @@ intellijPlatform {
         }
 
         changeNotes = """
-            Initial version
+            Bundle Jackson so the plugin loads in IntelliJ IDEA 2026.3 (fixes NoClassDefFoundError: com/fasterxml/jackson/databind/ObjectMapper).
         """.trimIndent()
+    }
+
+    publishing {
+        token = providers.environmentVariable("PUBLISH_TOKEN")
     }
 
     pluginVerification {
