@@ -11,7 +11,6 @@ import com.intellij.tasks.TaskRepositoryType;
 import com.intellij.tasks.impl.BaseRepository;
 import com.intellij.tasks.impl.httpclient.NewBaseRepositoryImpl;
 import com.intellij.util.xmlb.annotations.Tag;
-import groovy.util.logging.Slf4j;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Slf4j
 @Tag("Targetprocess")
 public class TargetprocessRepository extends NewBaseRepositoryImpl {
 
